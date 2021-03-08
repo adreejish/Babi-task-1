@@ -1,0 +1,50 @@
+<html>
+<form >
+<div id="chatbox"> </div>
+<input type= "text" id="query" size="45" placeholder= "enter text here" >
+<input type ="button" id="submit" value="Send">
+</form>
+
+<style>
+#chatbox {
+  height: 500px;
+  width: 500px;
+  background-color: powderblue;
+  overflow-y: scroll;
+  
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+    var data = {'currentconv':" ", 'query':" "};
+    $("#submit").click(function(){
+	
+	var bla = $('#query').val();
+	$('#chatbox').append(bla)
+	$('#chatbox').append("<div>  </div>")
+	data['query']=bla
+	console.log(data)
+        //alert("button");
+	
+
+     $.ajax({
+    type: 'POST',
+    url: 'http://127.0.0.1:5000/predict',
+    data: JSON.stringify(data),
+    dataType: 'json',
+    contentType: 'application/json; charset=utf-8'
+}).done(function(msg) {
+    //alert("Data Saved: " + msg);
+   data["currentconv"]=msg["currentconv"]
+   console.log(msg)
+   $('#chatbox').append(msg['answer'])
+   $('#chatbox').append("<div></div>")
+
+});
+  
+    }); 
+});
+</script>
