@@ -42,4 +42,5 @@ A working implementation of the bAbI dialogue task 1. This project aims to test 
 ### Links 
 
 <a href ="https://research.fb.com/downloads/babi/"> The bAbI project </a>
+
 <a href ="https://research.fb.com/wp-content/uploads/2017/04/learning-end-to-end.pdf"> Learning End-to-End Goal-Oriented Dialog, Bordes et al, Facebook Research </a>
